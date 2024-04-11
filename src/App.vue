@@ -5,8 +5,8 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <div id="app">
-    <Navbar />
+  <Navbar />
+  <div class="max-w-screen-xl mx-auto py-4">
     <RouterView />
   </div>
 </template>

@@ -3,9 +3,9 @@
 
     <nav class=" border-gray-200 bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <RouterLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="../assets/logo.svg" class="h-8" alt="Amazon" />
-            </a>
+            </RouterLink>
             <button data-collapse-toggle="navbar-default" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden focus:outline-none focus:ring-2  text-gray-400 hover:bg-gray-700 focus:ring-gray-600"
                 aria-controls="navbar-default" aria-expanded="false">
@@ -19,14 +19,14 @@
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul
                     class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-3  bg-blue-700 rounded md:bg-transparent  md:p-0 text-white md:text-blue-500"
-                            aria-current="page">Tienda</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-3  rounded   md:border-0 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Administración</a>
+
+                    <li v-for="route in routes" :key="route.path">
+                        <RouterLink :to="route.path"
+                            class="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
+                            :class="`text-white ${$route.path === route.path ? 'bg-white text-gray-900' : ''}`">
+                            {{ route.name }}
+                        </RouterLink>
+
                     </li>
                 </ul>
             </div>
@@ -36,6 +36,10 @@
 </template>
 
 <script setup>
+const routes = [
+    { path: '/', name: 'Tienda' },
+    { path: '/admin/products', name: 'Administración' },
+]
 
 </script>
 

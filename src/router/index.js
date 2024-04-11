@@ -3,6 +3,7 @@ import {
   createWebHistory
 } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Index from '../views/Products/Index.vue'
 
 const router = createRouter({
   history: createWebHistory(
@@ -12,6 +13,13 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+    {
+      path: '/admin/products',
+      name: 'admin-products',
+      component: Index
+    }
+
+
 
   ]
 })
