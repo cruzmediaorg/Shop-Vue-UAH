@@ -19,15 +19,16 @@
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul
                     class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
-
                     <li v-for="route in routes" :key="route.path">
                         <RouterLink :to="route.path"
                             class="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-700 hover:text-white"
-                            :class="`text-white ${$route.path === route.path ? 'bg-white text-gray-900' : ''}`">
+                            :class="`text-white ${$route.path === route.path ? 'bg-white text-black' : ''}`">
                             {{ route.name }}
                         </RouterLink>
 
                     </li>
+                    <Button @click="resetStorage" class="bg-green-300 px-3 py-1 text-sm font-medium rounded-md hover:bg-gray-700
+                        hover:text-white">Reiniciar storage</Button>
                 </ul>
             </div>
         </div>
@@ -36,10 +37,24 @@
 </template>
 
 <script setup>
+
 const routes = [
     { path: '/', name: 'Tienda' },
-    { path: '/admin/products', name: 'Administración' },
+    { path: '/admin/products', name: 'Gestionar productos' },
+    { path: '/admin/categories', name: 'Gestionar categorías' },
+
 ]
+
+const resetStorage = () => {
+    localStorage.removeItem('products')
+    localStorage.removeItem('categories')
+    localStorage.removeItem('compra')
+
+    alert('Se ha reiniciado el storage')
+    // Recargamos la página
+    location.reload()
+
+}
 
 </script>
 

@@ -47,8 +47,12 @@
                     {{ product.stock }}
                 </TableCell>
                 <TableCell class="flex space-x-2">
-                    <Button class="bg-black text-white hover:bg-black/70">Editar</button>
-                    <Button class="bg-red-500 hover:bg-red-500/70">Eliminar</Button>
+                    <RouterLink :to="'/admin/products/' + product.id + '/editar'"
+                        class="bg-black text-white hover:bg-black/70 px-2 py-1 h-fit rounded-md">
+                        Editar
+                    </RouterLink>
+                    <button @click="$emit('eliminar', product.id)"
+                        class="bg-red-500 text-white hover:bg-red-500/70 px-2 py-1 h-fit rounded-md">Eliminar</button>
                 </TableCell>
             </TableRow>
         </TableBody>
@@ -66,9 +70,10 @@ import {
     TableRow,
 } from '@/components/ui/table'
 import { Button } from "@/components/ui/button"
+import { RouterLink } from 'vue-router'
 
 defineProps(['products'])
-defineEmits(['edit', 'delete'])
+defineEmits(['eliminar'])
 </script>
 
 <style lang="scss" scoped></style>
